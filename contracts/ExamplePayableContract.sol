@@ -8,14 +8,11 @@ contract ExamplePayableContract {
         emit FundsReceived(msg.sender, msg.value);
     }
 
-    function withdrawFunds(address payable recipient, uint amount) public {
+    function withdrawFunds(address payable recipient, uint amount) external {
         require(amount <= address(this).balance, "Insufficient balance");
-        recipient.transfer(amount); //address(this).balance);
+        recipient.transfer(amount);
         emit FundsWithdrawn(recipient, amount);
     }
-
-    function withdrawAllFunds(address payable recipient) public {
-        recipient.transfer(address(this).balance);
-        emit FundsWithdrawn(recipient, address(this).balance);
-    }
 }
+
+
