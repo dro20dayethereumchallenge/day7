@@ -1,7 +1,6 @@
 pragma solidity ^0.8.0;
 
 contract ExamplePayableContract {
-
     event FundsReceived(address indexed sender, uint amount);
     event FundsWithdrawn(address indexed recipient, uint amount);
 
@@ -17,6 +16,6 @@ contract ExamplePayableContract {
 
     function withdrawAllFunds(address payable recipient) public {
         recipient.transfer(address(this).balance);
-        emit FundsWithdrawn(recipient, amount);
+        emit FundsWithdrawn(recipient, address(this).balance);
     }
 }
