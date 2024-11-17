@@ -10,9 +10,13 @@ contract ExamplePayableContract {
 
     function withdrawFunds(address payable recipient, uint amount) external {
         require(amount <= address(this).balance, "Insufficient balance");
-        recipient.transfer(amount);
+        recipient.transfer(amount); //address(this).balance);
         emit FundsWithdrawn(recipient, amount);
     }
-}
 
+    function withdrawAllFunds(address payable recipient) external {
+        recipient.transfer(address(this).balance);
+        emit FundsWithdrawn(recipient, address(this).balance);
+    }
+}
 
