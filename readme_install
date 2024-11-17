@@ -78,6 +78,11 @@ Promise {
 > await ethers.provider.getBalance(signers[2])
 > assert.equal((ethers.parseEther("1.0")), bal1, "not equal ")
 
+>  await ethers.provider.getBalance(signers[0])
+>  await ethers.provider.getBalance(signers[1])
+
+
+
 
 
 
